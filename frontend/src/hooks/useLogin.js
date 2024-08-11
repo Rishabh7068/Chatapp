@@ -9,7 +9,6 @@ const useLogin = () => {
 
     const login = async (username , password) =>{
        const success = handelInputErrors(username, password);
-       console.log(`/api/auth/login`);
        
        if(!success){
         return;

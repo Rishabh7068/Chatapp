@@ -16,6 +16,10 @@ const msgSchema = new mongoose.Schema({
     ref : "User",
     require :true,
   },
+  senderName: {
+    type: String,
+    required: true,
+  },
 },{timestamps : true});
 
 const Msg = mongoose.model("Msg", msgSchema);

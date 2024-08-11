@@ -1,6 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import generateToken from "../utils/generateToken.js";
+import { io } from "../sokect/socket.js";
 
 export const signup = async (req, res) => {
   try {
@@ -37,9 +38,8 @@ export const signup = async (req, res) => {
 
     if (newUser) {
       // GWT TOKEN
-
       generateToken(newUser._id, res);
-
+      
       await newUser.save();
       res.status(201).json({
         _id: newUser._id,

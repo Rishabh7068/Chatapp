@@ -7,6 +7,7 @@ export const sendMessage = async (req, res) => {
     const { message } = req.body;
     const { id: receiverID } = req.params;
     const senderId = req.user._id;
+    const senderName = req.user.fullName;
 
     let conversation = await Conversation.findOne({
       participants: {
@@ -24,6 +25,7 @@ export const sendMessage = async (req, res) => {
       message,
       senderId,
       receiverID,
+      senderName,
     });
 
     if (newMsg) {
